@@ -1,1 +1,26 @@
+package main
+
+import (
+	"time"
+)
+
+type Config struct {
+	NetworkID           uint64        `json:"network_id"`
+	DataDir             string        `json:"data_dir"`
+	PeerAddresses       []string      `json:"peer_addresses"`
+	ConsensusAlgorithm  string        `json:"consensus_algorithm"`
+	BlockTime           time.Duration `json:"block_time"`
+	GenesisBlock        *Block        `json:"genesis_block"`
+}
+
+func DefaultConfig() *Config {
+	return &Config{
+		NetworkID:           101,
+		DataDir:             "./data",
+		PeerAddresses:       []string{},
+		ConsensusAlgorithm:  "pow",
+		BlockTime:           5 * time.Second,
+		GenesisBlock:        nil,
+	}
+}
 
